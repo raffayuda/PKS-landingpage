@@ -1,96 +1,142 @@
-import React from 'react';
-import { Button } from './ui/button';
-import { ArrowRight, Users, Target, Award } from 'lucide-react';
-import { heroData } from '../data/mockData';
+import React, { useState, useEffect, useRef } from 'react';
+import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 const Hero = () => {
+  const categories = ['Religius', 'Amanah', 'Profesional', 'Kreatif', 'Peduli'];
+  const slides = [
+    {
+      title: 'Life at the Baltimore',
+      desc: 'Shoot with Sony a6000',
+      img: 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1600&auto=format&fit=crop'
+    },
+    {
+      title: 'Sunset over hill',
+      desc: 'Shoot with Sony a6000',
+      img: 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop'
+    },
+    {
+      title: 'City by the sea',
+      desc: 'Shoot with Sony a6000',
+      img: 'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=1600&auto=format&fit=crop'
+    }
+  ];
+  const [current, setCurrent] = useState(0);
+  const scrollRef = useRef(null);
+  const [dragging, setDragging] = useState(false);
+  const [dragStartX, setDragStartX] = useState(0);
+  const [dragStartScroll, setDragStartScroll] = useState(0);
+
+  // Auto slide every 5 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-16 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-orange-50 via-white to-orange-50"></div>
-      <div className="absolute top-20 right-0 w-96 h-96 bg-orange-200 rounded-full opacity-20 blur-3xl"></div>
-      <div className="absolute bottom-20 left-0 w-96 h-96 bg-orange-300 rounded-full opacity-20 blur-3xl"></div>
+    <section className="relative min-h-screen flex items-end overflow-hidden bg-black">
+      {/* Background Image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center transition-all duration-700"
+        style={{ backgroundImage: `url(${slides[current].img})` }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/70" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-8 animate-fade-in">
-            <div className="inline-flex items-center space-x-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold">
-              <Award size={16} />
-              <span>Partai Keadilan Sejahtera</span>
-            </div>
-
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
-              {heroData.title}
-              <span className="block text-orange-600 mt-2">{heroData.subtitle}</span>
+      {/* Content */}
+      <div className="relative max-w-7xl mx-auto px-8 w-full pb-16">
+        <div className="space-y-24">
+          {/* Title Section */}
+          <div className="max-w-4xl">
+            <h1 className="text-6xl md:text-7xl font-extralight text-white leading-tight tracking-tight">
+              PKS DPC Dramaga
+              <br />
+              Bersih, Peduli
+              <br />
+              dan Profesional
             </h1>
-
-            <p className="text-xl text-gray-600 leading-relaxed max-w-xl">
-              {heroData.tagline}
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <Button 
-                size="lg" 
-                className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
-              >
-                Gabung Relawan
-                <ArrowRight className="ml-2" size={20} />
-              </Button>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="border-2 border-orange-600 text-orange-600 hover:bg-orange-50 px-8 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105"
-              >
-                Lihat Program
-              </Button>
-            </div>
-
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-gray-200">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600">1000+</div>
-                <div className="text-sm text-gray-600 mt-1">Anggota Aktif</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600">50+</div>
-                <div className="text-sm text-gray-600 mt-1">Program</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600">15+</div>
-                <div className="text-sm text-gray-600 mt-1">Tahun Mengabdi</div>
-              </div>
-            </div>
           </div>
 
-          {/* Right Content - Illustration */}
-          <div className="relative hidden lg:block">
-            <div className="relative w-full h-[600px]">
-              {/* Decorative Cards */}
-              <div className="absolute top-10 right-10 w-72 h-72 bg-white rounded-2xl shadow-2xl p-6 transform rotate-6 hover:rotate-3 transition-transform duration-300">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                    <Users className="text-orange-600" size={24} />
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-900">Bersama Rakyat</div>
-                    <div className="text-sm text-gray-500">Untuk Dramaga</div>
-                  </div>
+          {/* Bottom Section */}
+          <div className="space-y-10">
+            {/* Categories */}
+            <div className="flex flex-wrap gap-3">
+              {categories.map((c) => (
+                <button
+                  key={c}
+                  className="px-6 py-2.5 rounded-full bg-black/40 text-white backdrop-blur-sm border border-white/20 text-sm font-light hover:bg-black/50 hover:border-white/30 transition-all"
+                >
+                  {c}
+                </button>
+              ))}
+            </div>
+
+            <div className="flex flex-col md:flex-row md:items-center md:gap-12 gap-6">
+              <div className="flex items-center gap-5 text-white flex-shrink-0">
+                <span className="text-sm font-light tracking-wider">
+                  {String(current + 1).padStart(2, '0')}
+                </span>
+                <div className="h-px w-80 max-w-full bg-white/20 rounded-full overflow-hidden">
+                  <div
+                    className="h-px bg-white rounded-full transition-all duration-500 ease-out"
+                    style={{ width: `${((current + 1) / slides.length) * 100}%` }}
+                  />
                 </div>
-                <div className="h-32 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl"></div>
+                <span className="text-sm font-light tracking-wider">
+                  {String(slides.length).padStart(2, '0')}
+                </span>
               </div>
 
-              <div className="absolute bottom-10 left-10 w-72 h-72 bg-white rounded-2xl shadow-2xl p-6 transform -rotate-6 hover:-rotate-3 transition-transform duration-300">
-                <div className="flex items-center space-x-3 mb-4">
-                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                    <Target className="text-orange-600" size={24} />
-                  </div>
-                  <div>
-                    <div className="font-bold text-gray-900">Visi Jelas</div>
-                    <div className="text-sm text-gray-500">Aksi Nyata</div>
-                  </div>
+              <div className="md:flex-1 flex justify-start md:justify-end">
+                <div
+                  ref={scrollRef}
+                  onMouseDown={(e) => { setDragging(true); setDragStartX(e.pageX - (scrollRef.current?.offsetLeft || 0)); setDragStartScroll(scrollRef.current?.scrollLeft || 0); }}
+                  onMouseLeave={() => setDragging(false)}
+                  onMouseUp={() => setDragging(false)}
+                  onMouseMove={(e) => {
+                    if (!dragging || !scrollRef.current) return; const x = e.pageX - (scrollRef.current.offsetLeft || 0); const walk = (x - dragStartX); scrollRef.current.scrollLeft = dragStartScroll - walk;
+                  }}
+                  onTouchStart={(e) => { const touch = e.touches[0]; setDragging(true); setDragStartX(touch.pageX - (scrollRef.current?.offsetLeft || 0)); setDragStartScroll(scrollRef.current?.scrollLeft || 0); }}
+                  onTouchMove={(e) => { if (!dragging || !scrollRef.current) return; const touch = e.touches[0]; const x = touch.pageX - (scrollRef.current.offsetLeft || 0); const walk = (x - dragStartX); scrollRef.current.scrollLeft = dragStartScroll - walk; }}
+                  onTouchEnd={() => setDragging(false)}
+                  className={`flex gap-3 overflow-x-auto md:overflow-visible pb-2 md:pb-0 snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden select-none ${dragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+                >
+                  {slides.map((s, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrent(idx)}
+                      className={`relative flex-shrink-0 min-w-[14rem] w-56 h-32 text-left rounded-2xl overflow-hidden border snap-start ${
+                        current === idx ? 'border-white/50' : 'border-white/20'
+                      } transition-all hover:border-white/40`}
+                    >
+                      <div className="absolute inset-0">
+                        <img
+                          src={s.img}
+                          alt={s.title}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                      </div>
+                      <div className="absolute left-4 top-1/2 -translate-y-1/2 w-16 h-16 rounded-lg overflow-hidden border border-white/30 bg-white/10 backdrop-blur-sm">
+                        <img
+                          src={s.img}
+                          alt={s.title}
+                          className="w-full h-full object-cover opacity-90"
+                        />
+                      </div>
+                      <div className="absolute right-4 top-1/2 -translate-y-1/2 text-right">
+                        <div className="text-white font-medium text-sm leading-tight mb-1">
+                          {s.title}
+                        </div>
+                        <div className="text-white/50 text-xs font-light">
+                          {s.desc}
+                        </div>
+                      </div>
+                    </button>
+                  ))}
                 </div>
-                <div className="h-32 bg-gradient-to-br from-orange-100 to-orange-200 rounded-xl"></div>
               </div>
             </div>
           </div>
