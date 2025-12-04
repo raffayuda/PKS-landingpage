@@ -98,12 +98,18 @@ export const beritaTerbaru = [
 ];
 
 export const galeri = [
-  { id: 1, image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=600&h=400&fit=crop", caption: "Rapat Koordinasi DPC" },
-  { id: 2, image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=400&fit=crop", caption: "Bakti Sosial Ramadan" },
-  { id: 3, image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=600&h=400&fit=crop", caption: "Pelatihan Kader" },
-  { id: 4, image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=600&h=400&fit=crop", caption: "Forum Diskusi Publik" },
-  { id: 5, image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=400&fit=crop", caption: "Kampanye Lingkungan Bersih" },
-  { id: 6, image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=600&h=400&fit=crop", caption: "Kegiatan Pemuda PKS" }
+  { id: 1, image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=800&h=600&fit=crop", caption: "Rapat Koordinasi DPC", category: "Bakti Sosial" },
+  { id: 2, image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop", caption: "Bakti Sosial Ramadan", category: "Bakti Sosial" },
+  { id: 3, image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop", caption: "Pelatihan Kader", category: "Pendidikan" },
+  { id: 4, image: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?w=800&h=600&fit=crop", caption: "Forum Diskusi Publik", category: "Pendidikan" },
+  { id: 5, image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&h=600&fit=crop", caption: "Kampanye Lingkungan Bersih", category: "Ekonomi" },
+  { id: 6, image: "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&h=600&fit=crop", caption: "Kegiatan Pemuda PKS", category: "Pendidikan" },
+  { id: 7, image: "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&h=600&fit=crop", caption: "Pemeriksaan Kesehatan Gratis", category: "Kesehatan" },
+  { id: 8, image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&h=600&fit=crop", caption: "Kunjungan Ke Panti Asuhan", category: "Bakti Sosial" },
+  { id: 9, image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&h=600&fit=crop", caption: "Pembagian Sembako", category: "Bakti Sosial" },
+  { id: 10, image: "https://images.unsplash.com/photo-1427751840561-9852520f8ce8?w=800&h=600&fit=crop", caption: "Workshop Digital Marketing", category: "Ekonomi" },
+  { id: 11, image: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&h=600&fit=crop", caption: "Senam Sehat Bersama", category: "Kesehatan" },
+  { id: 12, image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&h=600&fit=crop", caption: "Belajar Bareng Anak-anak", category: "Pendidikan" }
 ];
 
 export const kontakInfo = {
