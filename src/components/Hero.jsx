@@ -49,8 +49,8 @@ const Hero = () => {
       <div className="relative max-w-7xl mx-auto px-8 w-full pb-16">
         <div className="space-y-24">
           {/* Title Section */}
-          <div className="max-w-4xl">
-            <h1 className="text-6xl md:text-7xl font-extralight text-white leading-tight tracking-tight">
+          <div className="max-w-4xl pt-28">
+            <h1 className="text-4xl md:text-6xl font-extralight text-white leading-tight tracking-tight">
               PKS DPC Dramaga
               <br />
               Bersih, Peduli
